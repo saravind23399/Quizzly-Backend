@@ -6,7 +6,8 @@ const bodyparser = require('body-parser')
 const config = require('./Config/config')
 
 const app = express()
-const PORT = process.env.PORT | 3000
+const HOST = '0.0.0.0';
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({extended: true}))
@@ -19,7 +20,7 @@ app.use('/user', userRoute)
 app.use('/quiz', quizRoute)
 app.use('/question', questionRoute)
 
-app.listen (PORT, (startError)=>{
+app.listen (PORT, HOST, (startError)=>{
     if(startError){
         console.log('Cannot Start Server!')
     } else {
