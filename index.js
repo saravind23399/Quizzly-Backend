@@ -20,6 +20,13 @@ app.use('/user', userRoute)
 app.use('/quiz', quizRoute)
 app.use('/question', questionRoute)
 
+app.get('/', (req, res)=>{
+    res.json({
+        success:true,
+        message: 'You have reached The Quizzly Server on Heroku'
+    })
+})
+
 app.listen (PORT, (startError)=>{
     if(startError){
         console.log('Cannot Start Server!')
