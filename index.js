@@ -20,7 +20,7 @@ app.use('/user', userRoute)
 app.use('/quiz', quizRoute)
 app.use('/question', questionRoute)
 
-app.listen (PORT, HOST, (startError)=>{
+app.listen (PORT, (startError)=>{
     if(startError){
         console.log('Cannot Start Server!')
     } else {
