@@ -92,6 +92,7 @@ router.post('/register', (req, res) => {
                                         res.json({
                                             success: true,
                                             message: 'Registration Successfull !',
+                                            userId: saveDocs._id,
                                             debug: config.production ? undefined : saveDocs
                                         })
                                     }
