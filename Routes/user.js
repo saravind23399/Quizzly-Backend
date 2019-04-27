@@ -29,6 +29,7 @@ router.post('/authenticate', (req, res) => {
                             success: true,
                             message: 'Login Successfull',
                             role: findDocs[0].role,
+                            userid: findDocs[0]._id,
                             debug: config.production ? undefined : findDocs
                         })
                     } else {
