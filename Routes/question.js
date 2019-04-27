@@ -77,7 +77,7 @@ router.post('/newQuestion', (req, res) => {
         quizId: req.body.quizId,
         questionNumber: req.body.questionNumber,
         questionText: req.body.questionText,
-        questionImagePath: req.body.questionImagePath,
+        questionImage: req.body.questionImage, //Using Base64 Format Since Heroku FS is unstable on Free tier 
         option1Text: req.body.option1Text,
         option2Text: req.body.option2Text,
         option3Text: req.body.option3Text,

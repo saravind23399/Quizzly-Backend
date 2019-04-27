@@ -5,7 +5,7 @@ const questionSchema = Schema({
     quizId: Schema.Types.ObjectId,
     questionNumber: Number,
     questionText: String,
-    questionImagePath: String,
+    questionImage: String,
     option1Text: String,
     option2Text: String,
     option3Text: String,
