@@ -126,6 +126,7 @@ router.post('/postQuiz', (req, res) => {
             res.json({
                 success: true,
                 message: 'New Quiz Created!',
+                quizId: saveDocs._id,
                 debug: config.production ? undefined : saveDocs
             })
         }
