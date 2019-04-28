@@ -9,8 +9,8 @@ const app = express()
 const HOST = '0.0.0.0';
 const PORT = process.env.PORT || 3000;
 
-app.use(bodyparser.json())
-app.use(bodyparser.urlencoded({extended: true}))
+app.use(bodyparser.json({limit: '50mb', extended: true}))
+app.use(bodyparser.urlencoded({limit: '50mb', extended: true}))
 
 const userRoute = require('./Routes/user')
 const questionRoute = require('./Routes/question')
