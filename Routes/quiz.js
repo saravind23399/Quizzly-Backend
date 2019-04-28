@@ -110,6 +110,7 @@ router.post('/getQuizScore', (req, res) => {
 })
 
 router.post('/postQuiz', (req, res) => {
+    console.log(req.body)
     const newQuiz = quizModel({
         quizTitle: req.body.quizTitle,
         createdBy: req.body.createdBy
