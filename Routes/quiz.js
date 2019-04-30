@@ -67,7 +67,7 @@ router.post('/getQuiz', (req, res) => {
                         })
                     } else {
                         res.json({
-                            success: true,
+                            success: truxe,
                             message: 'You have already answered this quiz!',
                             debug: config.production ? undefined : findDocs
                         })
@@ -109,8 +109,34 @@ router.post('/getQuizScore', (req, res) => {
     })
 })
 
+router.post('/getUserScores', (req, res) => {
+    questionResponseModel.aggregate([
+        {
+            $match: {
+                userId: mongoose.Types.ObjectId(req.body.userId)
+            }
+        },
+         {
+            $group:
+            {
+                _id: "$quizId",
+                totalQuestions: { $sum: 1 },
+                correctResponses: { $sum: { $cond: ["$correct", 1, 0] } }
+            }
+        },
+        { $lookup: {from: 'quizzes', localField: '_id', foreignField: '_id', as: 'quiz'} }
+    ]).then((docs) => {
+        docs.filter((doc) => {
+            return doc._id == req.body.userId
+        })
+        res.json({
+            success: true,
+            message: docs
+        })
+    })
+})
+
 router.post('/postQuiz', (req, res) => {
-    console.log(req.body)
     const newQuiz = quizModel({
         quizTitle: req.body.quizTitle,
         createdBy: req.body.createdBy

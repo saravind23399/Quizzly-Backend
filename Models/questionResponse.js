@@ -2,7 +2,10 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const questionResponseSchema = Schema({
-   quizId : Schema.Types.ObjectId,
+   quizId : {
+      ref: 'Quiz',
+      type: Schema.Types.ObjectId
+   },
    questionId : Schema.Types.ObjectId,
    userId: Schema.Types.ObjectId,
    optionResponded: Number,
