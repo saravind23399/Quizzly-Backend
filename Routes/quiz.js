@@ -67,7 +67,7 @@ router.post('/getQuiz', (req, res) => {
                         })
                     } else {
                         res.json({
-                            success: truxe,
+                            success: true,
                             message: 'You have already answered this quiz!',
                             debug: config.production ? undefined : findDocs
                         })
